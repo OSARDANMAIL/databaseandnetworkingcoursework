@@ -1,4 +1,4 @@
-﻿
+
 using Microsoft.VisualBasic;
 using System.Diagnostics;
 using System.Net.Sockets;
@@ -296,7 +296,7 @@ public class Mainclass
     /// Functions to process database requests
     static void Dump(MySqlConnection connection, String ID)
     {
-        if (ifIDEXIST(connection, ID))
+        if (!ifIDEXIST(connection, ID))
         {
 
           Console.WriteLine($"User '{ID}' can't be found");
@@ -394,7 +394,7 @@ WHERE
                     for (int i = 0; i < rdr.FieldCount; i++)
                     {
 
-                        Console.WriteLine(rdr[0] + " -- " + rdr[1]);
+                        Console.WriteLine($"{rdr.GetName(i)} ={rdr[i]}");
                     }
 
                 }
